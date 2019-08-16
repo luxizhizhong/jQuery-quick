@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="p-4 m-4">
+    <button id="btn" class="btn btn-success">点我加载</button>
+    <pre id="code" style="height: 80vh"></pre>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(()=> {
+  let codeBar = $('#code')
+  $('#btn').on('click',()=> {
+    $.ajax({
+      url: `https://api.github.com/users/d1y`,
+      success(data) {
+        codeBar.html(JSON.stringify(data))
+      }
+    })
+  })
+})
+</script>
+</html>
